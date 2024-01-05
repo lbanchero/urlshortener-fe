@@ -6,6 +6,7 @@ const LinkShortener = () => {
   const [url, setUrl] = useState('');
   const [shortenedLink, setShortenedLink] = useState('');
   const fullUrl = window.location.href + shortenedLink;
+  const statsUrl = window.location.href + "stats/" + shortenedLink;
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -34,6 +35,8 @@ const LinkShortener = () => {
         <button type="submit">Short Link</button>
       </form>
       {shortenedLink && <p>Shortened Link: <Link to={fullUrl}>{fullUrl}</Link></p>}
+      {shortenedLink && <p>Stats Link: <Link to={statsUrl}>{statsUrl}</Link></p>}
+
     </div>
   );
 };
