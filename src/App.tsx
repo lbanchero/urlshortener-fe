@@ -14,6 +14,7 @@ function App() {
           <Route path="/:shortUrl" element={<LinkRedirect />} />
           <Route path="/stats/:shortUrl" element={<LinkStatistics />} />
           <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
