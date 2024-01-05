@@ -9,11 +9,16 @@ const LinkShortener = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    try {
-      const response = await axios.post('/api/link', { url });
-      setShortenedLink(response.data.shortCode);
-    } catch (error) {
-      console.error('Error shortening link:', error);
+  
+    if (url.trim() !== '') {
+      try {
+        const response = await axios.post('/api/link', { url });
+        setShortenedLink(response.data.shortCode);
+      } catch (error) {
+        console.error('Error shortening link:', error);
+      }
+    } else {
+      console.error('URL is required');
     }
   };
 
@@ -26,7 +31,7 @@ const LinkShortener = () => {
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter URL"
         />
-        <button type="submit">Shorten</button>
+        <button type="submit">Short Link</button>
       </form>
       {shortenedLink && <p>Shortened Link: <Link to={fullUrl}>{fullUrl}</Link></p>}
     </div>

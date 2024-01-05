@@ -1,10 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from '../axios';
 
 const LinkStatistics = () => {
   const { shortUrl } = useParams<{ shortUrl: string }>();
+  const navigate = useNavigate();
   const [clicks, setClicks] = useState(0);
+
+  const handleDelete = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    try {
+      await axios.delete(`/api/link/${shortUrl}`).then(() => {
+        navigate('/');
+      });
+    } catch (error) {
+      console.error('Error deleting link:', error);
+    }
+  };
 
   useEffect(() => {
     const fetchStats = async () => {
@@ -23,6 +35,8 @@ const LinkStatistics = () => {
     <div className="form">
       <h3>Statistics for {shortUrl}</h3>
       <p>Clicks: {clicks}</p>
+
+      <button type="button" className="deleteButton" onClick={handleDelete}>Delete</button>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(135deg, #52D1DC 0%, #475B5A 100%);
-  color: #A3A9AA; /* Light grey text */
+  color: #8d9293;
   text-align: center;
   min-height: 100vh;
   display: flex;
@@ -14,7 +14,7 @@ body {
   padding: 20px;
   max-width: 500px;
   background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 8px 16px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   backdrop-filter: blur(5px);
 }
@@ -42,6 +42,14 @@ button {
 
 button:hover {
   background-color: #3BA6A6;
+}
+
+.deleteButton {
+  background-color: #E74C3C;
+}
+
+.deleteButton:hover {
+  background-color: #b42010;
 }
 
 p {
