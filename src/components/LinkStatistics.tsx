@@ -25,6 +25,7 @@ const LinkStatistics = () => {
         setClicks(response.data.length);
       } catch (error) {
         console.error('Error fetching stats:', error);
+        navigate('/not-found');
       }
     };
 
